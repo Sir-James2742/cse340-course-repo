@@ -88,7 +88,7 @@ main {
 
     box-shadow: 0 4px 18px rgba(15, 61, 94, 0.1);
 
-    text-align: center;
+    text-align: start;
     flex: 1;
 }
 

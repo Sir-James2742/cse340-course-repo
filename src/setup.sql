@@ -10,3 +10,88 @@ VALUES
 ('BrightFuture Builders', 'A nonprofit focused on improving community infrastructure through sustainable construction projects.', 'info@brightfuturebuilders.org', 'brightfuture-logo.png'),
 ('GreenHarvest Growers', 'An urban farming collective promoting food sustainability and education in local neighborhoods.', 'contact@greenharvest.org', 'greenharvest-logo.png'),
 ('UnityServe Volunteers', 'A volunteer coordination group supporting local charities and service initiatives.', 'hello@unityserve.org', 'unityserve-logo.png');
+CREATE TABLE service_project (
+    project_id SERIAL PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    location VARCHAR(150),
+    organization_id INT,
+    FOREIGN KEY (organization_id) REFERENCES organization(organization_id)
+);
+INSERT INTO service_project
+(title, description, location, organization_id)
+VALUES
+('Community Center Renovation',
+ 'Renovation and improvement of an existing community center.',
+ 'Nairobi',
+ 1),
+
+('Sustainable School Construction',
+ 'Construction of environmentally friendly classrooms.',
+ 'Kiambu',
+ 1),
+
+('Rural Footbridge Project',
+ 'Construction of safe pedestrian footbridges for local communities.',
+ 'Machakos',
+ 1),
+
+('Affordable Housing Initiative',
+ 'Development of affordable and sustainable housing units.',
+ 'Nakuru',
+ 1),
+
+('Community Water Facility',
+ 'Construction of a community water facility to improve access to clean water.',
+ 'Kajiado',
+ 1),
+
+('Community Vegetable Garden',
+ 'Establishment of a community vegetable garden to improve food security.',
+ 'Nairobi',
+ 2),
+
+('Urban Farming Training',
+ 'Training residents on sustainable urban farming techniques.',
+ 'Kiambu',
+ 2),
+
+('School Garden Program',
+ 'Creation of school gardens for agricultural and environmental education.',
+ 'Nakuru',
+ 2),
+
+('Community Composting Project',
+ 'A project that converts organic household waste into useful compost.',
+ 'Machakos',
+ 2),
+
+('Food Donation Harvest',
+ 'Harvesting and distributing surplus vegetables to families in need.',
+ 'Kajiado',
+ 2),
+
+('Community Cleanup Drive',
+ 'Volunteers clean public spaces and promote responsible waste management.',
+ 'Nairobi',
+ 3),
+
+('Elderly Support Program',
+ 'Volunteers provide assistance and support to elderly community members.',
+ 'Kiambu',
+ 3),
+
+('School Supplies Donation',
+ 'Collection and distribution of school supplies to students in need.',
+ 'Machakos',
+ 3),
+
+('Community Health Awareness',
+ 'Community activities promoting health, sanitation, and hygiene.',
+ 'Nakuru',
+ 3),
+
+('Youth Mentorship Program',
+ 'Mentorship activities providing guidance on education and career development.',
+ 'Kajiado',
+ 3);
