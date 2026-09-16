@@ -10,7 +10,7 @@ VALUES
 ('BrightFuture Builders', 'A nonprofit focused on improving community infrastructure through sustainable construction projects.', 'info@brightfuturebuilders.org', 'brightfuture-logo.png'),
 ('GreenHarvest Growers', 'An urban farming collective promoting food sustainability and education in local neighborhoods.', 'contact@greenharvest.org', 'greenharvest-logo.png'),
 ('UnityServe Volunteers', 'A volunteer coordination group supporting local charities and service initiatives.', 'hello@unityserve.org', 'unityserve-logo.png');
-CREATE TABLE service_project (
+CREATE TABLE project (
     project_id SERIAL PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     description TEXT,
@@ -18,7 +18,7 @@ CREATE TABLE service_project (
     organization_id INT,
     FOREIGN KEY (organization_id) REFERENCES organization(organization_id)
 );
-INSERT INTO service_project
+INSERT INTO project
 (title, description, location, organization_id)
 VALUES
 ('Community Center Renovation',
@@ -95,3 +95,32 @@ VALUES
  'Mentorship activities providing guidance on education and career development.',
  'Kajiado',
  3);
+
+ CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE project_category (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
+);
+
+INSERT INTO category (name)
+  VALUES ('Environmental'),
+         ('Educational'),
+		 ('Community Service'),
+		 ('Health and Wellness');
+
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    (1, 1),
+    (2, 2),
+    (3, 4);
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    (1, 3),
+    (1, 4);		 
