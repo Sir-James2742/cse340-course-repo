@@ -61,7 +61,6 @@ nav a {
         background-color 0.2s ease,
         color 0.2s ease;
 }
-
 nav a:hover,
 nav a:focus {
     background-color: #1f6f9f;

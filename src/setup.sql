@@ -124,3 +124,63 @@ INSERT INTO project_category (project_id, category_id)
 VALUES
     (1, 3),
     (1, 4);		 
+
+UPDATE project
+SET project_date = CASE project_id
+    WHEN 1 THEN '2026-12-08'::date
+    WHEN 2 THEN '2026-11-03'::date
+    WHEN 3 THEN '2027-01-01'::date
+    WHEN 4 THEN '2026-08-10'::date
+    WHEN 5 THEN '2026-10-20'::date
+    WHEN 6 THEN '2026-11-11'::date
+    WHEN 7 THEN '2026-10-10'::date
+    WHEN 8 THEN '2026-12-30'::date
+    WHEN 9 THEN '2026-10-20'::date
+    WHEN 10 THEN '2026-12-24'::date
+    WHEN 11 THEN '2026-11-15'::date
+    WHEN 12 THEN '2026-12-01'::date
+    WHEN 13 THEN '2027-02-10'::date
+END
+WHERE project_id BETWEEN 1 AND 13;
+
+SELECT * FROM project
+
+UPDATE project
+SET project_date = CASE project_id
+    WHEN 14 THEN '2026-12-29'::date
+    WHEN 15 THEN '2027-11-03'::date
+END
+WHERE project_id BETWEEN 14 AND 15;
+DELETE FROM project_category;
+
+
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    (1, 3),
+    (2, 2),
+    (2, 1),
+    (3, 3),
+    (4, 3),
+    (4, 1),
+    (5, 3),
+    (5, 1),
+    (6, 1),
+    (6, 3),
+    (7, 2),
+    (7, 1),
+    (8, 2),
+    (8, 1),
+    (9, 1),
+    (9, 3),
+    (10, 3),
+    (10, 4),
+    (11, 1),
+    (11, 3),
+    (12, 3),
+    (12, 4),
+    (13, 2),
+    (13, 3),
+    (14, 4),
+    (14, 2),
+    (15, 2),
+    (15, 3);
