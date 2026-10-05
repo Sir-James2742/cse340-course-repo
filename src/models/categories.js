@@ -65,7 +65,27 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
     await assignCategoryToProject(categoryId, projectId);
   }
 }
+
+const createCategory = async (name) => {
+  const query = `
+        INSERT INTO category (name)
+        VALUES ($1)
+        RETURNING category_id;
+    `;
+  const result = await db.query(query, [name]);
+  return result.rows[0];
+};
+
+const updateCategory = async (categoryId, name) => {
+  const query = `
+        UPDATE category
+        SET name = $2
+        WHERE category_id = $1;
+    `;
+  await db.query(query, [categoryId, name]);
+};
+
 export {
   getAllCategories, getCategoryById,
-  getCategoriesByProjectId, getServiceProjectsByCategoryId, updateCategoryAssignments
+  getCategoriesByProjectId, getServiceProjectsByCategoryId, updateCategoryAssignments, createCategory, updateCategory
 };  

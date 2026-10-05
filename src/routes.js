@@ -7,7 +7,13 @@ import { showCategoriesPage, showAssignCategoriesForm, processAssignCategoriesFo
 import { testErrorPage } from './controllers/errors.js';
 import { showOrganizationDetailsPage } from './controllers/organizations.js';
 import { showProjectDetailsPage, projectValidation } from './controllers/projects.js';
-import { showCategoryDetailsPage } from './controllers/categories.js';
+import {
+    showCategoryDetailsPage, showNewCategoryForm,
+    processNewCategoryForm,
+    showEditCategoryForm,
+    processEditCategoryForm,
+    categoryValidation
+} from './controllers/categories.js';
 import { showNewOrganizationForm } from './controllers/organizations.js';
 import {
     processNewOrganizationForm, organizationValidation,
@@ -33,6 +39,10 @@ router.get('/new-project', showNewProjectForm);
 router.post('/new-project', projectValidation, processNewProjectForm);
 router.get('/edit-project/:id', showEditProjectForm);
 router.post('/edit-project/:id', projectValidation, processEditProjectForm);
+router.get('/new-category', showNewCategoryForm);
+router.post('/new-category', categoryValidation, processNewCategoryForm);
+router.get('/edit-category/:id', showEditCategoryForm);
+router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 // error-handling routes
 router.get('/test-error', testErrorPage);
 
