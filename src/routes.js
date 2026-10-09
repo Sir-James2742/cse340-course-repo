@@ -18,7 +18,12 @@ import { showNewOrganizationForm } from './controllers/organizations.js';
 import {
     processNewOrganizationForm, organizationValidation,
     showEditOrganizationForm, processEditOrganizationForm
- } from './controllers/organizations.js';
+} from './controllers/organizations.js';
+ 
+import {
+    showUserRegistrationForm, processUserRegistrationForm,
+    showLoginForm, processLoginForm, processLogout,requireLogin, showDashboard
+ } from './controllers/users.js';         
 
 const router = express.Router();
 
@@ -43,6 +48,12 @@ router.get('/new-category', showNewCategoryForm);
 router.post('/new-category', categoryValidation, processNewCategoryForm);
 router.get('/edit-category/:id', showEditCategoryForm);
 router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
+router.get('/register', showUserRegistrationForm);
+router.post('/register', processUserRegistrationForm);
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
+router.get('/dashboard', requireLogin, showDashboard);
 // error-handling routes
 router.get('/test-error', testErrorPage);
 
