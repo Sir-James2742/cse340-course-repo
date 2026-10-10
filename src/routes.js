@@ -23,7 +23,7 @@ import {
 import {
     showUserRegistrationForm, processUserRegistrationForm,
     showLoginForm, processLoginForm, processLogout, requireLogin,
-    requireRole, showDashboard
+    requireRole, showDashboard, showAllUsers
  } from './controllers/users.js';         
 
 const router = express.Router();
@@ -55,6 +55,7 @@ router.get('/login', showLoginForm);
 router.post('/login', processLoginForm);
 router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, showDashboard);
+router.get('/users',requireRole('admin'), showAllUsers); // New route for showing all users
 // error-handling routes
 router.get('/test-error', testErrorPage);
 
